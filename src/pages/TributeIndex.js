@@ -11,7 +11,7 @@ const TributeIndex = ({tributes}) => {
             <main className="card">
                 {tributes?.map((tribute, index) => {
                 return (
-                    <div key={index}>
+                    <div className="individual-card" key={index}>
                     < Card
                         style={{
                         width: '18rem'
@@ -29,7 +29,9 @@ const TributeIndex = ({tributes}) => {
                             className="mb-2 text-muted"
                             tag="h6"
                         >
-                            {tribute.age}
+                            age: {tribute.age}
+                            <br></br>
+                            {tribute.district}
                         </CardSubtitle>
                         <Button>
                             <NavLink to={`/tributeshow/${tribute.id}`} className="nav-link">

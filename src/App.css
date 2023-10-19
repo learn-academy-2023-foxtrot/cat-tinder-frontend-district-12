@@ -1,0 +1,8 @@
+.individual-card{
+    display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+.card {
+    margin: 2rem 0;
+  }

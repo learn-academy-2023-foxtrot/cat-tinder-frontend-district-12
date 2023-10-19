@@ -22,7 +22,7 @@ const [tributes, setTributes] = useState(MockTributes)
     <Routes>
       <Route path="/" element={<Home />} />
       <Route path="/tributeindex" element={<TributeIndex tributes={tributes}/>} />
-      <Route path="/tributeshow" element={<TributeShow />} />
+      <Route path="/tributeshow/:id" element={<TributeShow tributes={tributes}/>} />
       <Route path="/tributenew" element={<TributeNew />} />
       <Route path="/tributeedit" element={<TributeEdit />} />
       <Route path="*" element={<NotFound />} />

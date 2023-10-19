@@ -1,6 +1,6 @@
 import { render, screen } from "@testing-library/react"
 import { BrowserRouter } from "react-router-dom"
-import TributeIndex from "./TributeIndex"
+import TributeIndex from "../pages/TributeIndex"
 import MockTribute from '../MockTribute'
 
 
