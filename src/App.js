@@ -16,6 +16,10 @@ import React, {useState} from 'react'
 const App = () =>  {
 const [tributes, setTributes] = useState(MockTributes)
 
+const createTribute = (newTribute) => {
+  console.log(newTribute)
+}
+
   return (
     <>
     <Header />
@@ -23,7 +27,7 @@ const [tributes, setTributes] = useState(MockTributes)
       <Route path="/" element={<Home />} />
       <Route path="/tributeindex" element={<TributeIndex tributes={tributes}/>} />
       <Route path="/tributeshow/:id" element={<TributeShow tributes={tributes}/>} />
-      <Route path="/tributenew" element={<TributeNew />} />
+      <Route path="/tributenew" element={<TributeNew createTribute={createTribute} />} />
       <Route path="/tributeedit" element={<TributeEdit />} />
       <Route path="*" element={<NotFound />} />
     </Routes>
