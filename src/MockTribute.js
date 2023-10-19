@@ -17,3 +17,4 @@ const tributes = [
         district: "District 12"
     }
 ]
+export default tributes
