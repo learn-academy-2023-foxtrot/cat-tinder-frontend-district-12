@@ -10,7 +10,7 @@ describe("<NotFound />", () => {
         </BrowserRouter>
 
         )
-        screen.logTestingPlaygroundURL()
+       
         const notFoundImage = screen.getByRole('img', {
             name: /404 not found/i
           })

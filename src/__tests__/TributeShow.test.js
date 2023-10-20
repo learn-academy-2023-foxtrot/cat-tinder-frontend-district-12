@@ -12,7 +12,7 @@ describe('<TributeShow />', () => {
         </Routes>
       </MemoryRouter>
     )
-    screen.logTestingPlaygroundURL()
+   
     const tributeName = screen.getByRole('heading', {
         name: /tribute show page/i
       })

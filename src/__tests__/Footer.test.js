@@ -9,7 +9,7 @@ describe("<Footer />", () => {
           <Footer />
         </BrowserRouter>
       )
-      screen.logTestingPlaygroundURL()
+      
       const copyRight = screen.getByText(/© 2023 dre money, xeman, anabellahella/i)
       expect (copyRight).toBeInTheDocument()
     })
