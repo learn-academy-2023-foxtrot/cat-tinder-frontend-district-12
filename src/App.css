@@ -1,20 +1,25 @@
 .individual-card{
     display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
-  color: rgb(195, 176, 176)
+    flex-wrap: wrap;
+    justify-content: space-around;
+    color: rgb(195, 176, 176);
 }
 .card {
     margin: 2rem 0;
-    color: rgb(195, 176, 176);
+    .card-title {
+      color: rgb(156, 156, 156);
+    }
+    .card-subtitle { 
+      color: rgb(156, 156, 156);
+    }
   }
-  *{
+* {
     background-color: black;
     color: rgb(239, 115, 6);
     font-family: Impact, fantasy;
     text-transform: uppercase;
   }
-  h3 {
+h1 {
     color: #f40b0b;
     text-align: center;
   }
@@ -22,12 +27,14 @@
 .picture {
   width: 500px;
   height: 400px;
-  text-align: center;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
 }
 
 .nav-link {
   color: #f40b0b;
-  text-decoration: none;
 }
 
 .nav-link a {
@@ -37,3 +44,4 @@ color: #f40b0b;
 .h6 {
   color: rgb(195, 176, 176);
 }
+

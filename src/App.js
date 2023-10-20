@@ -20,6 +20,10 @@ const createTribute = (newTribute) => {
   console.log(newTribute)
 }
 
+const updateTribute = (editTribute) => {
+  console.log(editTribute);
+}
+
   return (
     <>
     <Header />
@@ -28,7 +32,7 @@ const createTribute = (newTribute) => {
       <Route path="/tributeindex" element={<TributeIndex tributes={tributes}/>} />
       <Route path="/tributeshow/:id" element={<TributeShow tributes={tributes}/>} />
       <Route path="/tributenew" element={<TributeNew createTribute={createTribute} />} />
-      <Route path="/tributeedit" element={<TributeEdit />} />
+      <Route path="/tributeedit/:id" element={<TributeEdit updateTribute={updateTribute}/>} />
       <Route path="*" element={<NotFound />} />
     </Routes>
     <Footer />
