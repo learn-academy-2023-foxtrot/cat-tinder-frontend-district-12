@@ -1,6 +1,7 @@
 import React from "react"
 import { useParams } from "react-router-dom"
 import { Card, CardBody, CardTitle, CardSubtitle, CardText } from "reactstrap"
+import { NavLink } from "react-router-dom"
 
 const TributeShow = ({ tributes }) => {
     const { id } = useParams()
@@ -25,7 +26,7 @@ const TributeShow = ({ tributes }) => {
                             {currentTribute.name}
                         </CardTitle>
                         <CardSubtitle
-                            className="mb-2 text-muted"
+                            className="card-subtitle"
                             tag="h6"
                             >
                             age: {currentTribute.age}
@@ -36,6 +37,9 @@ const TributeShow = ({ tributes }) => {
                         <CardText>
                         hobby: {currentTribute.hobby}
                         </CardText>
+                        <NavLink to={`/tributeedit/${tributes.id}`} className="nav-link">
+                            Edit
+                            </NavLink>
                     </Card >
                         )}
                     </div>

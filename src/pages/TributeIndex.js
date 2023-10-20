@@ -22,11 +22,11 @@ const TributeIndex = ({tributes}) => {
                         src={tribute.image}
                         />
                         <CardBody>
-                        <CardTitle tag="h5">
+                        <CardTitle className="card-title" tag="h5">
                             {tribute.name}
                         </CardTitle>
                         <CardSubtitle
-                            className="mb-2 text-muted"
+                            className="card-subtitle"
                             tag="h6"
                         >
                             age: {tribute.age}
