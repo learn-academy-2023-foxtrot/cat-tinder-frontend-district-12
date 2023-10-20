@@ -10,7 +10,7 @@ describe("<Home />", () => {
           <Home />
         </BrowserRouter>
       )
-        screen.logTestingPlaygroundURL()
+        
         const homeHeading = screen.getByRole('heading', {
             name: /may the odds be ever in your favor!/i
           })

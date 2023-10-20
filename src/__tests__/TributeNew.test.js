@@ -11,12 +11,9 @@ describe("<TributeNew />", () => {
       </BrowserRouter>
     )
   
-    screen.debug() 
-    screen.logTestingPlaygroundURL() 
     const newHeading = screen.getByRole("heading", {
       name: /add a tribute/i
     })
-    screen.debug(newHeading)
 
     expect(newHeading).toHaveTextContent("Add a Tribute")
   })

@@ -9,7 +9,7 @@ describe("<Header />", () => {
           <Header />
         </BrowserRouter>
       )
-    screen.logTestingPlaygroundURL()
+   
     const copyRight = screen.getByRole('link', {
     name: /logo welcome to the 69th hunger games/i
         })
