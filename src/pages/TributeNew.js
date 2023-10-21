@@ -5,12 +5,14 @@ import { useNavigate } from "react-router-dom"
 
 const TributeNew = ({createTribute}) => {
     const [newTribute, setNewTribute] = useState ({
+        
         name: "",
         age: "",
         hobby: "",
         image: "",
         district: ""
     })
+    console.log("newTribute:", newTribute);
 
     const handleChange = (e) => {
         setNewTribute({ ...newTribute, [e.target.name]: e.target.value })

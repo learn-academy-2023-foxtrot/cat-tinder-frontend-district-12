@@ -27,9 +27,9 @@ const Header = () => {
 
         </NavbarBrand>
         <div className="nav-link">
-        <NavLink to="/tributeindex">See the Tributes!</NavLink>
+        <NavLink to="/tributes">See the Tributes!</NavLink>
         <br></br>
-        <NavLink to="/tributenew">Add a New Tribute</NavLink>
+        <NavLink to="/tributes/new">Add a New Tribute</NavLink>
         </div>
       </Navbar>
     </>
