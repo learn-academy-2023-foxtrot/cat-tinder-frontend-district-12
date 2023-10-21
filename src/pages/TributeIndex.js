@@ -4,7 +4,7 @@ import { NavLink } from "react-router-dom"
 import { Card, CardBody, CardTitle, CardSubtitle, Button } from "reactstrap"
 
 const TributeIndex = ({tributes}) => {
-    console.log("tributes:",tributes);
+    
     return(
         <>
             <h2>View the Tributes</h2>
@@ -34,7 +34,7 @@ const TributeIndex = ({tributes}) => {
                             {tribute.district}
                         </CardSubtitle>
                         <Button>
-                            <NavLink to={`/tributeshow/${tribute.id}`} className="nav-link">
+                            <NavLink to={`/tributes/${tribute.id}`} className="nav-link">
                             Click to view more
                             </NavLink>
                         </Button>

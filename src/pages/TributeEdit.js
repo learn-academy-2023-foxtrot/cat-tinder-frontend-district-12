@@ -1,22 +1,31 @@
 import  React, {useState} from "react"
 import { Form, FormGroup, Input, Label, Button } from "reactstrap"
-import { useNavigate } from "react-router-dom"
-const TributeEdit = ({updateTribute}) => {
+import { useNavigate, useParams } from "react-router-dom"
+
+const TributeEdit = ({updateTribute, tributes}) => {
+    const { id } = useParams()
+    let currentTribute = tributes?.find((tribute) => tribute.id === +id)
+      
     const [editTribute, setEditTribute] = useState ({
-        name: "",
-        age: "",
-        hobby: "",
-        image: "",
-        district: ""
+        
+        name: currentTribute?.name,
+        age: currentTribute?.age,
+        hobby: currentTribute?.hobby,
+        image: currentTribute?.image,
+        district: currentTribute?.district
     })
+    
     const handleChange = (e) => {
         setEditTribute({ ...editTribute, [e.target.name]: e.target.value })
     }
+    
     const handleSubmit = () => {
-        updateTribute(editTribute)
-        navigate("/tributeindex")
+        updateTribute(editTribute, currentTribute?.id)
+        console.log("editTribute in EDIT", editTribute);
+        navigate("/tributes")
     }
     const navigate = useNavigate()
+    console.log("editTribute:", editTribute);
     return(
         <>
             <h3>Edit a Tribute</h3>
@@ -28,8 +37,8 @@ const TributeEdit = ({updateTribute}) => {
                     <Input
                     id="name"
                     name="name"
-                    placeholder="with a placeholder"
-                    type="string"
+                    placeholder="name a placeholder"
+                    type="text"
                     onChange={handleChange}
                     value={editTribute.name}
                     />

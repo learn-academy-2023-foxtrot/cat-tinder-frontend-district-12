@@ -6,6 +6,7 @@ import { NavLink } from "react-router-dom"
 const TributeShow = ({ tributes }) => {
     const { id } = useParams()
     let currentTribute = tributes?.find((tribute) => tribute.id === +id)
+ 
     return (
         <>
         <h2 className="heading">Tribute Show Page</h2>
@@ -18,7 +19,7 @@ const TributeShow = ({ tributes }) => {
                     }}
                     >
                         <img
-                        alt={`profile picture for ${currentTribute.name}`}
+                        alt={`profile picture for ${currentTribute?.name}`}
                         src={currentTribute.image}
                         />
                         <CardBody>
@@ -37,9 +38,9 @@ const TributeShow = ({ tributes }) => {
                         <CardText>
                         hobby: {currentTribute.hobby}
                         </CardText>
-                        <NavLink to={`/tributeedit/${tributes.id}`} className="nav-link">
+                        <NavLink to={`/tributes/${currentTribute.id}/edit`} className="nav-link">
                             Edit
-                            </NavLink>
+                        </NavLink>
                     </Card >
                         )}
                     </div>

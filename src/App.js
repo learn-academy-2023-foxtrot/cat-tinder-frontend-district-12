@@ -8,20 +8,53 @@ import TributeNew from './pages/TributeNew'
 import TributeShow from './pages/TributeShow'
 import Header from './components/Header'
 import Footer from './components/Footer'
-import MockTributes from './MockTribute'
-import { Routes, Route} from "react-router-dom"
-import React, {useState} from 'react'
+// import MockTributes from './MockTribute'
+import { Routes, Route, useNavigate } from "react-router-dom"
+import React, { useState, useEffect } from 'react'
 
 
 const App = () =>  {
-const [tributes, setTributes] = useState(MockTributes)
+const [tributes, setTributes] = useState([])
 
-const createTribute = (newTribute) => {
-  console.log(newTribute)
+
+
+const readTribute = () => {
+  fetch("http://localhost:3000/tributes")
+  .then((response) => response.json())
+  .then((payload) => setTributes(payload))
+  .catch((error) => console.log(error))
 }
 
-const updateTribute = (editTribute) => {
-  console.log(editTribute);
+useEffect (() => {
+  readTribute()
+}, [])
+
+const createTribute = (newTribute) => {
+  fetch("http://localhost:3000/tributes", {
+    body: JSON.stringify(newTribute),
+    headers:{
+      "Content-Type": "application/json"
+    },
+    method: "POST"
+  })
+  .then((response) => response.json())
+  .then((payload) => readTribute())
+  .catch((error) => console.log("Tribute created error:", error))
+}
+
+const updateTribute = (editTribute, id) => {
+  console.log("editTribute:", editTribute);
+  fetch(`http://localhost:3000/tributes/${id}`, {
+    body: JSON.stringify(editTribute),
+    headers: {
+      "Content-Type": "application/json"
+    },
+    method: "PATCH"
+  })
+  .then((response) => response.json())
+  .then((payload) => readTribute())
+  .catch((errors) => console.log("Tribute update errors:", errors))
+  
 }
 
   return (
@@ -29,10 +62,10 @@ const updateTribute = (editTribute) => {
     <Header />
     <Routes>
       <Route path="/" element={<Home />} />
-      <Route path="/tributeindex" element={<TributeIndex tributes={tributes}/>} />
-      <Route path="/tributeshow/:id" element={<TributeShow tributes={tributes}/>} />
-      <Route path="/tributenew" element={<TributeNew createTribute={createTribute} />} />
-      <Route path="/tributeedit/:id" element={<TributeEdit updateTribute={updateTribute}/>} />
+      <Route path="/tributes" element={<TributeIndex tributes={tributes}/>} />
+      <Route path="/tributes/:id" element={<TributeShow tributes={tributes}/>} />
+      <Route path="/tributes/new" element={<TributeNew createTribute={createTribute} />} />
+      <Route path="/tributes/:id/edit" element={<TributeEdit updateTribute={updateTribute} tributes={tributes}/>}  />
       <Route path="*" element={<NotFound />} />
     </Routes>
     <Footer />
