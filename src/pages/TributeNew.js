@@ -19,7 +19,7 @@ const TributeNew = ({createTribute}) => {
     }
     const handleSubmit = () => {
         createTribute(newTribute)
-        navigate("/tributeindex")
+        navigate("/tributes")
     }
     const navigate = useNavigate()
 
