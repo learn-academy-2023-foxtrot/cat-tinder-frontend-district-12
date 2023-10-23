@@ -38,13 +38,13 @@ const createTribute = (newTribute) => {
     method: "POST"
   })
   .then((response) => response.json())
-  .then((payload) => readTribute())
+  .then(() => readTribute())
   .catch((error) => console.log("Tribute created error:", error))
 }
 
 const updateTribute = (editTribute, id) => {
   console.log("editTribute:", editTribute);
-  fetch(`http://localhost:3000/tributes/${id}`, {
+  fetch(`http://localhost:3000/tributes/${id}/edit`, {
     body: JSON.stringify(editTribute),
     headers: {
       "Content-Type": "application/json"
@@ -52,7 +52,7 @@ const updateTribute = (editTribute, id) => {
     method: "PATCH"
   })
   .then((response) => response.json())
-  .then((payload) => readTribute())
+  .then(() => readTribute())
   .catch((errors) => console.log("Tribute update errors:", errors))
   
 }
