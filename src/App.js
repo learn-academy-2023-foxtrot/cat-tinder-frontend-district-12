@@ -29,6 +29,10 @@ useEffect (() => {
   readTribute()
 }, [])
 
+// const onDelete = () => {
+//   setTributes("")
+// }
+
 const createTribute = (newTribute) => {
   fetch("http://localhost:3000/tributes", {
     body: JSON.stringify(newTribute),
@@ -44,7 +48,7 @@ const createTribute = (newTribute) => {
 
 const updateTribute = (editTribute, id) => {
   console.log("editTribute:", editTribute);
-  fetch(`http://localhost:3000/tributes/${id}/edit`, {
+  fetch(`http://localhost:3000/tributes/${id}`, {
     body: JSON.stringify(editTribute),
     headers: {
       "Content-Type": "application/json"
@@ -56,6 +60,18 @@ const updateTribute = (editTribute, id) => {
   .catch((errors) => console.log("Tribute update errors:", errors))
   
 }
+const deleteTribute = (id) => {
+  console.log("id:", id);
+  fetch(`http://localhost:3000/tributes/${id}`, {
+    headers: { 
+      "Content-Type" : "application/json"
+    },
+    method: 'DELETE'
+  })
+  .then(res => res.json())
+  .then(() => readTribute())
+  .catch((errors) => console.log("delete errors:", errors))
+}
 
   return (
     <>
@@ -66,6 +82,7 @@ const updateTribute = (editTribute, id) => {
       <Route path="/tributes/:id" element={<TributeShow tributes={tributes}/>} />
       <Route path="/tributes/new" element={<TributeNew createTribute={createTribute} />} />
       <Route path="/tributes/:id/edit" element={<TributeEdit updateTribute={updateTribute} tributes={tributes}/>}  />
+      <Route path="/tributes/:id" element={<TributeShow tributes={tributes} deleteTribute={deleteTribute} />} />
       <Route path="*" element={<NotFound />} />
     </Routes>
     <Footer />
@@ -73,4 +90,4 @@ const updateTribute = (editTribute, id) => {
   )
 }
 
-export default App;
+export default App

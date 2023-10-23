@@ -1,11 +1,20 @@
 import React from "react"
 import { useParams } from "react-router-dom"
-import { Card, CardBody, CardTitle, CardSubtitle, CardText } from "reactstrap"
-import { NavLink } from "react-router-dom"
+import { Card, CardBody, CardTitle, CardSubtitle, CardText, Button } from "reactstrap"
+import { NavLink, useNavigate } from "react-router-dom"
 
-const TributeShow = ({ tributes }) => {
+const TributeShow = ({ tributes, deleteTribute }) => {
     const { id } = useParams()
     let currentTribute = tributes?.find((tribute) => tribute.id === +id)
+
+    const navigate = useNavigate()
+    
+    const handleDelete = () => {
+        console.log(".id:", currentTribute.id);
+        deleteTribute(currentTribute?.id)
+
+        navigate("/tributes")
+    }
  
     return (
         <>
@@ -41,6 +50,24 @@ const TributeShow = ({ tributes }) => {
                         <NavLink to={`/tributes/${currentTribute.id}/edit`} className="nav-link">
                             Edit
                         </NavLink>
+                        {/* <NavLink to={`/tributes/${onDelete}/${id}`} className="nav-link">
+                            Delete
+                        </NavLink> */}
+
+                        {/* <NavLink to="#" onClick={() => onDelete(currentTribute?.id)} className="nav-link">
+                            Delete
+                        </NavLink> */}
+
+                        <NavLink to="/tributes" className="nav-link">
+                            <Button onClick={handleDelete}>DELETE</Button>
+                        
+                        </NavLink>
+                        {/* <Button onClick={() => handleDelete(currentTribute.id)}>
+                            Delete
+                        </Button> */}
+                        {/* <Button onClick={handleDelete}>
+                            Delete
+                        </Button> */}
                     </Card >
                         )}
                     </div>
