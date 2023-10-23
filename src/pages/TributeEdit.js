@@ -24,6 +24,7 @@ const TributeEdit = ({updateTribute, tributes}) => {
         console.log("editTribute in EDIT", editTribute);
         navigate("/tributes")
     }
+
     const navigate = useNavigate()
     console.log("editTribute:", editTribute);
     return(

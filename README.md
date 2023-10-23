@@ -68,3 +68,16 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `yarn build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+const deleteTribute = (id) => {
+  console.log("id:", id);
+  fetch(`http://localhost:3000/tributes/${id}`, {
+    headers: { 
+      "Content-Type" : "application/json"
+    },
+    method: 'DELETE'
+  })
+  .then(res => res.json())
+  .then(() => readTribute())
+  .catch((errors) => console.log("delete errors:", errors))
+}
