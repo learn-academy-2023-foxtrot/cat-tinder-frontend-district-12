@@ -5,7 +5,6 @@ import { useNavigate } from "react-router-dom"
 
 const TributeNew = ({createTribute}) => {
     const [newTribute, setNewTribute] = useState ({
-        
         name: "",
         age: "",
         hobby: "",
@@ -98,7 +97,6 @@ const TributeNew = ({createTribute}) => {
             </Form>
         </>
         )
-
 }
 
 export default TributeNew

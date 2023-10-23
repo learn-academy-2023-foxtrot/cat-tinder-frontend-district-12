@@ -8,8 +8,7 @@ import TributeNew from './pages/TributeNew'
 import TributeShow from './pages/TributeShow'
 import Header from './components/Header'
 import Footer from './components/Footer'
-// import MockTributes from './MockTribute'
-import { Routes, Route, useNavigate } from "react-router-dom"
+import { Routes, Route} from "react-router-dom"
 import React, { useState, useEffect } from 'react'
 
 
@@ -28,10 +27,6 @@ const readTribute = () => {
 useEffect (() => {
   readTribute()
 }, [])
-
-// const onDelete = () => {
-//   setTributes("")
-// }
 
 const createTribute = (newTribute) => {
   fetch("http://localhost:3000/tributes", {
@@ -61,16 +56,15 @@ const updateTribute = (editTribute, id) => {
   
 }
 const deleteTribute = (id) => {
-  console.log("id:", id);
   fetch(`http://localhost:3000/tributes/${id}`, {
-    headers: { 
-      "Content-Type" : "application/json"
+    headers: {
+      "Content-Type": "application/json"
     },
-    method: 'DELETE'
+    method: "DELETE"
   })
-  .then(res => res.json())
-  .then(() => readTribute())
-  .catch((errors) => console.log("delete errors:", errors))
+    .then((response) => response.json())
+    .then(() => readTribute())
+    .catch((errors) => console.log("delete errors:", errors))
 }
 
   return (
@@ -78,11 +72,10 @@ const deleteTribute = (id) => {
     <Header />
     <Routes>
       <Route path="/" element={<Home />} />
-      <Route path="/tributes" element={<TributeIndex tributes={tributes}/>} />
-      <Route path="/tributes/:id" element={<TributeShow tributes={tributes}/>} />
+      <Route path="/tributes" element={<TributeIndex tributes={tributes} />} />
       <Route path="/tributes/new" element={<TributeNew createTribute={createTribute} />} />
-      <Route path="/tributes/:id/edit" element={<TributeEdit updateTribute={updateTribute} tributes={tributes}/>}  />
       <Route path="/tributes/:id" element={<TributeShow tributes={tributes} deleteTribute={deleteTribute} />} />
+      <Route path="/tributes/:id/edit" element={<TributeEdit updateTribute={updateTribute} tributes={tributes} />} />
       <Route path="*" element={<NotFound />} />
     </Routes>
     <Footer />
